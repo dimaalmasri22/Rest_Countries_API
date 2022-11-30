@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./styleHome.css">
+</head>
+<body>
+    
+    <nav>
+    <h3>Where in the world?</h3>
+    <button class="darkMode"><i class="fa fa-moon-o"></i><span>Dark Mode</span></button>
+</nav>
+<div class="searchAndFilter">
+<form >
+    <label for="search"><ion-icon name="search-outline"></ion-icon></label>
+    <input type="text" id="search" name="search" placeholder="Search for a country...">
+</form>
+<div class="selector">
+<div class="selectFeild" onclick="filterByRegionField()">
+    <p>Filter by Region </p>
+    <ion-icon name="chevron-down-outline" class="iconDown"></ion-icon>
+    
+</div>
+<ul class="list">
+    <li class="AF">Africa</li>
+    <li class="AM">America</li>
+    <li class="AS">Asia</li>
+    <li class="EU">Europe</li>
+    <li class="OC">Oceania</li>
+</ul>
+</div>
+</div>
+<div class="containerOfCards"></div>
+<!-- end of html -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="./javascriptHome.js"></script>
+</body>
+</html>
