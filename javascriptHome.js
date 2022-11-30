@@ -119,7 +119,8 @@ document.querySelector("form").addEventListener("submit", (event) => {
           .querySelector("h3").innerText
       );
       // window.location.href = "http://127.0.0.1:5500/detail.html";
-      window.open("http://127.0.0.1:5501/detail.html", "_self");
+      // window.open("http://127.0.0.1:5501/detail.html", "_self");
+        window.open("./detail.html", "_self");
     });
   }
 });
@@ -280,7 +281,7 @@ function load() {
           .querySelector("h3").innerText
       );
       // window.location.href = "http://127.0.0.1:5500/detail.html";
-      window.open("http://127.0.0.1:5501/detail.html", "_self");
+      window.open("./detail.html", "_self");
     });
   }
 
