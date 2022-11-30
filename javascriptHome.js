@@ -199,7 +199,7 @@ async function filterRegion(regionUrl) {
               .children[i].querySelector("a")
               .querySelector("h3").innerText
           );
-          window.open("http://127.0.0.1:5501/detail.html", "_self");
+          window.open("./detail.html", "_self");
         });
       }
     });
