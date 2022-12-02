@@ -103,7 +103,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
       div3.appendChild(label3);
       div1.append(countryObj.population);
       div2.append(countryObj.region);
-      div3.append(countryObj.capital);
+      div3.append(countryObj.Capital);
     }
   }
   let numOfCards = document.querySelector(".containerOfCards").children.length;
@@ -188,7 +188,7 @@ async function filterRegion(regionUrl) {
         div3.appendChild(label3);
         div1.append(json[i].population);
         div2.append(json[i].region);
-        div3.append(json[i].capital);
+        div3.append(json[i].Capital);
         let countryClick =
           document.querySelector(".containerOfCards").children[i];
         countryClick.addEventListener("click", (event) => {
@@ -266,7 +266,7 @@ function load() {
     div3.appendChild(label3);
     div1.append(countryObj.population);
     div2.append(countryObj.region);
-    div3.append(countryObj.capital);
+    div3.append(countryObj.Capital);
   }
   for (let i = 0; i < 250; i++) {
     let countryClick = document.querySelector(".containerOfCards").children[i];
