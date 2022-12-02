@@ -112,7 +112,7 @@ nav .darkMode {
 }
 .container .details .textStyle .borderCountries span {
   margin-bottom: 1.5rem;
-  margin-right: 20rem;
+  margin-right: 25rem;
   font-weight: 600;
   font-size: 1.5rem;
 }
@@ -128,7 +128,7 @@ nav .darkMode {
   
 }
 
-
+/* 400px */
 @media (min-width: 400px) {
   nav h3 {
     font-size: 2rem;
@@ -140,6 +140,8 @@ nav .darkMode {
   }
 }
 
+
+/* 800px */
 @media (min-width: 800px) {
   body {
     width: 100%;
@@ -153,4 +155,36 @@ nav .darkMode {
     font-size: 1.5rem;
     margin-right: 4rem;
   }
+
+  .info {
+    display: flex;
+    column-gap: 10rem;
+    height: 100%;
+}
+.container .info img {
+      box-shadow: 0.5rem 0.5rem 0.8rem #4e4d4d;
+    margin: 5rem 0;
+    width: 50%;
+    min-height: 35vh;
+    
+    
+}
+.textStyle {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+
+}
+.borderCountries {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.container .details .textStyle .sameMargins div {
+    font-size: 1.5rem;
+    color:var(--DarkGray) ;
+}
+.container .details .textStyle .sameMargins span {
+    font-weight: 800;
+}
 }

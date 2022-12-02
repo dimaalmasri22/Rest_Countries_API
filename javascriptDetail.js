@@ -24,6 +24,7 @@ button.addEventListener('click',(event)=>{
           let lang = document.querySelector(".info").querySelector(".details").querySelector(".textStyle").querySelector(".Info2").children[2];
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 countryImg.src=countryObj.flag;
+countryImg.className='styleImg';
 container.prepend(countryImg);
 //
 country.innerText=countryObj.countryName;
@@ -37,17 +38,18 @@ tld.append(countryObj.topLevelDomain);
 curr.append(countryObj.currencies);
 lang.append(countryObj.languages);
 //
-for(let i=0;i<countryObj.borderCountries.length;i++){
-let div=document.createElement('div');
-div.className='borders';
-div.innerText=countryObj.borderCountries[i];
-let borders = document
-  .querySelector(".info")
-  .querySelector(".details")
-  .querySelector(".textStyle")
-  .querySelector(".borderCountries");
+try{for (let i = 0; i < countryObj.borderCountries.length; i++) {
+  let div = document.createElement("div");
+  div.className = "borders";
+  div.innerText = countryObj.borderCountries[i];
+  let borders = document
+    .querySelector(".info")
+    .querySelector(".details")
+    .querySelector(".textStyle")
+    .querySelector(".borderCountries");
   borders.appendChild(div);
-}
+}}catch{setTimeout(alert('no borders'),10000)}
+
 
 //
 return;
