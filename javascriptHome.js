@@ -8,12 +8,13 @@ let displaySelected = document.querySelector(".selectFeild").querySelector("p");
 let list = document.querySelector(".list");
 let options = [item1, item2, item3, item4, item5];
 let input = document.querySelector("#search");
-//fetch variables
+//-------fetch URL variables------------------------------------------
 let allURL = "https://restcountries.com/v3.1/all";
 let regionUrl = "https://restcountries.com/v3.1/region/";
+//--------------------------------------------------------------------
 allCountries(allURL);
 filterRegion(regionUrl);
-//fetch all countries function
+//------------fetch all countries function---------------------------
 async function allCountries(allURL) {
   let response = await fetch(allURL);
   let json = await response.json();
@@ -24,28 +25,65 @@ async function allCountries(allURL) {
     let region = json[i].region;
     let Capital = json[i].capital;
     let flag = json[i].flags.png;
+    let nativeName,
+      currencies,
+      languages,
+      subRegion,
+      topLevelDomain,
+      borderCountries;
+    // other information should be saved to the local storage to use them the next page
+    if (json[i].name.nativeName != undefined) {
+      nativeName = Object.values(json[i].name.nativeName)[0].common;
+    }
+    if (json[i].languages != undefined) {
+      languages = Object.values(json[i].languages);
+    }
+    if (json[i].currencies != undefined) {
+      currencies = Object.values(json[i].currencies)[0].name;
+    }
+    if (json[i].tld != undefined) {
+      topLevelDomain = json[i].tld[0];
+    }
+
+    if (json[i].name.nativeName == undefined) {
+      nativeName = "non";
+    }
+    if (json[i].languages == undefined) {
+      languages = "non";
+    }
+    if (json[i].currencies == undefined) {
+      currencies = "non";
+    }
+    if (json[i].tld == undefined) {
+      topLevelDomain = "non";
+    }
+    subRegion = json[i].subregion;
+
+    borderCountries = json[i].borders;
+    //-------------------------------------------------------------------------------
     let object = {
       countryName: countryName,
       population: population,
       region: region,
       Capital: Capital,
       flag: flag,
+      nativeName: nativeName,
+      currencies: currencies,
+      languages: languages,
+      subRegion: subRegion,
+      topLevelDomain: topLevelDomain,
+      borderCountries: borderCountries,
     };
-    // console.log(object)
     if (localStorage.length != 250) {
       save(await JSON.stringify(object), i);
     }
-    //
   }
-  // let firstArray = json[0];
-  // console.log(firstArray);
   load();
 }
 //input feild
 document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
   let inputValue = document.getElementById("search").value;
-  // console.log(inputValue);
   document.querySelector(".containerOfCards").innerHTML = "";
   for (let i = 0; i < 250; i++) {
     let parsing = localStorage.getItem(`country${i}`);
@@ -64,10 +102,6 @@ document.querySelector("form").addEventListener("submit", (event) => {
       let label1 = document.createElement("span");
       let label2 = document.createElement("span");
       let label3 = document.createElement("span");
-      let linkSecondPage = document.createElement("a"); //*
-
-      linkSecondPage.className = "anchorStyle"; //*
-      // linkSecondPage.href = "./detail.html"; //*
       label1.innerText = "Population: ";
       label1.className = "prc";
       label2.innerText = "Region: ";
@@ -85,19 +119,13 @@ document.querySelector("form").addEventListener("submit", (event) => {
       div2.className = "region";
 
       div3.className = "capital";
-      document.querySelector(".containerOfCards").appendChild(divContainer); //
-      divContainer.appendChild(linkSecondPage); //
-      linkSecondPage.appendChild(countryImg); //
-      linkSecondPage.appendChild(name); //
-      linkSecondPage.appendChild(div1); //
-      linkSecondPage.appendChild(div2); //
-      linkSecondPage.appendChild(div3); //
-      //  document.querySelector(".containerOfCards").appendChild(divContainer);
-      //  divContainer.appendChild(countryImg);
-      //  divContainer.appendChild(name);
-      //  divContainer.appendChild(div1);
-      //  divContainer.appendChild(div2);
-      //  divContainer.appendChild(div3);
+     
+       document.querySelector(".containerOfCards").appendChild(divContainer);
+       divContainer.appendChild(countryImg);
+       divContainer.appendChild(name);
+       divContainer.appendChild(div1);
+        divContainer.appendChild(div2);
+        divContainer.appendChild(div3);
       div1.appendChild(label1);
       div2.appendChild(label2);
       div3.appendChild(label3);
@@ -115,11 +143,8 @@ document.querySelector("form").addEventListener("submit", (event) => {
         "country",
         document
           .querySelector(".containerOfCards")
-          .children[i].querySelector("a")
-          .querySelector("h3").innerText
+          .children[i].querySelector("h3").innerText
       );
-      // window.location.href = "http://127.0.0.1:5500/detail.html";
-      // window.open("http://127.0.0.1:5501/detail.html", "_self");
         window.open("./detail.html", "_self");
     });
   }
@@ -128,18 +153,13 @@ document.querySelector("form").addEventListener("submit", (event) => {
 //filter regions
 async function filterRegion(regionUrl) {
   options.forEach((element) => {
-    // console.log(element);
-    // console.log(options[0].innerText);
     element.addEventListener("click", async (event) => {
       event.preventDefault();
       document.querySelector(".containerOfCards").innerHTML = "";
-      // at.removeAllChildNodes(document.querySelector(".containerOfCards"));
       console.log(event.target.innerText);
       let response = await fetch(regionUrl + event.target.innerText);
       let json = await response.json();
-      //   console.log(json[0].flags.png);
       for (let i = 0; i < json.length; i++) {
-        // console.log(json.length);
         let divContainer = document.createElement("div");
         let countryImg = document.createElement("img");
         let name = document.createElement("h3");
@@ -149,10 +169,7 @@ async function filterRegion(regionUrl) {
         let label1 = document.createElement("span");
         let label2 = document.createElement("span");
         let label3 = document.createElement("span");
-        let linkSecondPage = document.createElement("a"); //*
-
-        linkSecondPage.className = "anchorStyle"; //*
-        // linkSecondPage.href = "./detail.html"; //*
+      
         label1.innerText = "Population: ";
         label1.className = "prc";
         label2.innerText = "region: ";
@@ -170,19 +187,13 @@ async function filterRegion(regionUrl) {
         div2.className = "region";
 
         div3.className = "capital";
-        document.querySelector(".containerOfCards").appendChild(divContainer); //
-        divContainer.appendChild(linkSecondPage); //
-        linkSecondPage.appendChild(countryImg); //
-        linkSecondPage.appendChild(name); //
-        linkSecondPage.appendChild(div1); //
-        linkSecondPage.appendChild(div2); //
-        linkSecondPage.appendChild(div3); //
-        // document.querySelector(".containerOfCards").appendChild(divContainer);
-        // divContainer.appendChild(countryImg);
-        // divContainer.appendChild(name);
-        // divContainer.appendChild(div1);
-        // divContainer.appendChild(div2);
-        // divContainer.appendChild(div3);
+      
+        document.querySelector(".containerOfCards").appendChild(divContainer);
+        divContainer.appendChild(countryImg);
+        divContainer.appendChild(name);
+        divContainer.appendChild(div1);
+        divContainer.appendChild(div2);
+        divContainer.appendChild(div3);
         div1.appendChild(label1);
         div2.appendChild(label2);
         div3.appendChild(label3);
@@ -197,8 +208,7 @@ async function filterRegion(regionUrl) {
             "country",
             document
               .querySelector(".containerOfCards")
-              .children[i].querySelector("a")
-              .querySelector("h3").innerText
+              .children[i].querySelector("h3").innerText
           );
           window.open("./detail.html", "_self");
         });
@@ -225,11 +235,6 @@ function load() {
     let label1 = document.createElement("span");
     let label2 = document.createElement("span");
     let label3 = document.createElement("span");
-    let linkSecondPage = document.createElement("a"); //*
-
-    linkSecondPage.className = "anchorStyle"; //*
-
-    // linkSecondPage.href="../detail.html"; //*
     label1.innerText = "Population: ";
     label1.className = "prc";
     label2.innerText = "Region: ";
@@ -248,19 +253,13 @@ function load() {
 
     div3.className = "capital";
 
-    document.querySelector(".containerOfCards").appendChild(divContainer); //
-    divContainer.appendChild(linkSecondPage); //
-    linkSecondPage.appendChild(countryImg); //
-    linkSecondPage.appendChild(name); //
-    linkSecondPage.appendChild(div1); //
-    linkSecondPage.appendChild(div2); //
-    linkSecondPage.appendChild(div3); //
-    // document.querySelector(".containerOfCards").appendChild(divContainer);
-    // divContainer.appendChild(countryImg);
-    // divContainer.appendChild(name);
-    // divContainer.appendChild(div1);
-    // divContainer.appendChild(div2);
-    // divContainer.appendChild(div3);
+    
+    document.querySelector(".containerOfCards").appendChild(divContainer);
+    divContainer.appendChild(countryImg);
+    divContainer.appendChild(name);
+    divContainer.appendChild(div1);
+    divContainer.appendChild(div2);
+    divContainer.appendChild(div3);
     div1.appendChild(label1);
     div2.appendChild(label2);
     div3.appendChild(label3);
@@ -277,10 +276,8 @@ function load() {
         "country",
         document
           .querySelector(".containerOfCards")
-          .children[i].querySelector("a")
-          .querySelector("h3").innerText
+          .children[i].querySelector("h3").innerText
       );
-      // window.location.href = "http://127.0.0.1:5500/detail.html";
       window.open("./detail.html", "_self");
     });
   }
@@ -330,27 +327,13 @@ darkMode.addEventListener("click", (event) => {
 
   for (let i = 0; i < lengthOfCards; i++) {
     cardsInside.children[i].classList.toggle("changeToDark");
-    cardsInside.children[i]
-      .querySelector("a")
-      .children[1].classList.toggle("changeToWhite");
-    cardsInside.children[i]
-      .querySelector("a")
-      .children[2].classList.toggle("changeToWhite");
-    cardsInside.children[i]
-      .querySelector("a")
-      .children[2].children[0].classList.toggle("changeToWhite");
-    cardsInside.children[i]
-      .querySelector("a")
-      .children[3].classList.toggle("changeToWhite");
-    cardsInside.children[i]
-      .querySelector("a")
-      .children[3].children[0].classList.toggle("changeToWhite");
-    cardsInside.children[i]
-      .querySelector("a")
-      .children[4].classList.toggle("changeToWhite");
-    cardsInside.children[i]
-      .querySelector("a")
-      .children[4].children[0].classList.toggle("changeToWhite");
+    cardsInside.children[i].children[1].classList.toggle("changeToWhite");
+    cardsInside.children[i].children[2].classList.toggle("changeToWhite");
+    cardsInside.children[i].children[2].children[0].classList.toggle("changeToWhite");
+    cardsInside.children[i].children[3].classList.toggle("changeToWhite");
+    cardsInside.children[i].children[3].children[0].classList.toggle("changeToWhite");
+    cardsInside.children[i].children[4].classList.toggle("changeToWhite");
+    cardsInside.children[i].children[4].children[0].classList.toggle("changeToWhite");
     // let change=true;
     // let filterChange=true;
   }

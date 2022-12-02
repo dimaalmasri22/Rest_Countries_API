@@ -55,7 +55,7 @@ nav .darkMode {
   width: 330px;
   padding: 1rem;
   box-shadow: 0 0 0.3rem #c8c7c7;
-  background-color:white;
+  background-color: white;
   border-radius: 0.5rem;
   /* border: 1px solid black; */
 }
@@ -63,28 +63,26 @@ form input {
   position: relative;
   top: -1rem;
   border: 0;
-width: 80%;
-height:50px;
-background-color:transparent;
-outline: none;
+  width: 80%;
+  height: 50px;
+  background-color: transparent;
+  outline: none;
 }
 form label {
   position: relative;
   bottom: 1rem;
-  background-color:transparent;
+  background-color: transparent;
   margin-left: 1rem;
   margin-right: 1.5rem;
-  
 }
 form input::placeholder {
-    color:var(--DarkGray);
-    font-size: 0.9rem;
+  color: var(--DarkGray);
+  font-size: 0.9rem;
 }
 form label ion-icon {
-    top :4px;
-    /* border: 1px solid black; */
-    color: var(--DarkGray);
-    
+  top: 4px;
+  /* border: 1px solid black; */
+  color: var(--DarkGray);
 }
 .selectFeild {
   display: flex;
@@ -101,162 +99,157 @@ form label ion-icon {
   margin-top: 3.5rem;
   padding: 2rem;
 }
- .list {
+.list {
   position: absolute;
   z-index: 9999999;
-    background-color: var(--White);
-    /* border: 1px solid black; */
-    width: 60%;
-    margin-left: 2rem;
-    margin-top: 0.5rem;
-    border-radius: 0.5rem;
-    list-style: none;
-    font-weight: 600;
-    color: var(--DarkBlue);
-     box-shadow: 0 0 0.3rem #c8c7c7;
-     cursor: pointer;
-     /* padding-left: 2rem ; */
-     display: none;
-
- }
- 
-.display {
-    display: block;
+  background-color: var(--White);
+  /* border: 1px solid black; */
+  width: 60%;
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  list-style: none;
+  font-weight: 600;
+  color: var(--DarkBlue);
+  box-shadow: 0 0 0.3rem #c8c7c7;
+  cursor: pointer;
+  /* padding-left: 2rem ; */
+  display: none;
 }
- .list li {
-   
-    padding:8px 2rem;
 
- }
+.display {
+  display: block;
+}
+.list li {
+  padding: 8px 2rem;
+}
 .list li:hover {
-    background-color: rgb(245, 242, 242);
+  background-color: rgb(245, 242, 242);
 }
 .containerOfCards {
   position: relative;
 }
 .cards {
- 
-    width: 280px;
-    height: 350px;
-    margin:50px 0 50px 50px ;
-    background-color: var(--White);
-    box-shadow: 0 0 0.3rem #c8c7c7;
-    border-radius: 0.5rem;
-    color: var(--DarkBlue);
+  width: 280px;
+  height: 350px;
+  margin: 50px 0 50px 50px;
+  background-color: var(--White);
+  box-shadow: 0 0 0.3rem #c8c7c7;
+  border-radius: 0.5rem;
+  color: var(--DarkBlue);
 }
-  .countryImg {
-    border-radius:  0.5rem 0.5rem 0 0;
+.countryImg {
+  border-radius: 0.5rem 0.5rem 0 0;
+  width: 100%;
+  height: 50%;
+}
+.countryName {
+  color: var(--VeryDarkBlue);
+  padding: 15px 0 15px 20px;
+}
+.population,
+.region,
+.capital {
+  color: var(--DarkGray);
+  padding: 0 0 5px 20px;
+}
+.prc {
+  color: var(--VeryDarkBlue);
+  font-weight: bold;
+}
+/* media query min-width=400px */
+@media (min-width: 400px) {
+  .containerOfCards {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  nav h3 {
+    font-size: 2rem;
+    margin-left: 2rem;
+  }
+  nav .darkMode {
+    font-size: 1.5rem;
+    margin-right: 2rem;
+  }
+}
+
+/* media query min-width=800px */
+@media (min-width: 800px) {
+  body {
     width: 100%;
-    height: 50%;
-  }
-  .countryName {
-    color: var(--VeryDarkBlue);
-    padding: 15px 0 15px 20px ;
-  }
-  .population,.region,.capital {
-    color: var(--DarkGray);
-      padding:0 0 5px 20px;
-  }
-  .prc {
-    color: var(--VeryDarkBlue);
-    font-weight: bold;
-  }
-  @media (min-width:400px){
-.containerOfCards {
-  display: flex;
-  flex-wrap: wrap;
-}
-nav h3 {
-  font-size:2rem ;
-  margin-left: 2rem;
-}
-nav .darkMode {
-  font-size: 1.5rem;
-  margin-right: 2rem;
-}
   }
 
-  @media (min-width:800px){
-    body {
-      width: 100%;
-    }
+  nav h3 {
+    margin-left: 4rem;
+    font-size: 2rem;
+  }
+  nav .darkMode {
+    font-size: 1.5rem;
+    margin-right: 4rem;
+  }
 
-    nav h3 {
-      margin-left: 4rem;
-      font-size: 2rem;
-    }
-    nav .darkMode {
-      font-size: 1.5rem;
-       margin-right: 4rem;
-    }
- 
- .searchAndFilter {
-display: flex;
-justify-content: space-between;
-/* border: 1px solid pink; */
-height: 15vh;
- }
+  .searchAndFilter {
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid pink; */
+    height: 15vh;
+  }
   .searchAndFilter form {
-  width:35%;
-  height: 60px;
-  align-self: center;
-  /* border: 1px solid purple; */
-  margin-left: 4rem;
- }
- form input {
-  position: relative;
-  outline: none;
-  border: none;
-  background-color: transparent;
- width:70%;
- height: 150%;
-  /* border: 1px solid blue; */
-  margin-top: -0.5rem;
- }
- form input::placeholder {
-  position: absolute;
-  top: 0.65rem;
-  font-size: 1.2rem;
-  /* border: 1px solid black; */
-  
- }
- form label {
-  font-size: 1rem;
-  /* border: 1px solid red; */
- }
- .selector {
-  /* border: 1px solid black; */
- position: relative;
-  margin: 2rem 3rem;
-width: 12%;   
- }
- .selectFeild {
-  /* border: 1px solid blue; */
-  position: relative;
-  top: -1.2rem;
-  left: -2rem;
-  width: 100%;
-
-  
- }
- .list {
-  /* border: 1px solid black; */
-  position: absolute;
-  width:100%;
-  left: -2rem;
- }
- .containerOfCards {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
- 
- }
-
+    width: 35%;
+    height: 60px;
+    align-self: center;
+    /* border: 1px solid purple; */
+    margin-left: 4rem;
   }
-  /* darkMode and lightMode */
+  form input {
+    position: relative;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    width: 70%;
+    height: 150%;
+    /* border: 1px solid blue; */
+    margin-top: -0.5rem;
+  }
+  form input::placeholder {
+    position: absolute;
+    top: 0.65rem;
+    font-size: 1.2rem;
+    /* border: 1px solid black; */
+  }
+  form label {
+    font-size: 1rem;
+    /* border: 1px solid red; */
+  }
+  .selector {
+    /* border: 1px solid black; */
+    position: relative;
+    margin: 2rem 3rem;
+    width: 12%;
+  }
+  .selectFeild {
+    /* border: 1px solid blue; */
+    position: relative;
+    top: -1.2rem;
+    left: -2rem;
+    width: 100%;
+  }
+  .list {
+    /* border: 1px solid black; */
+    position: absolute;
+    width: 100%;
+    left: -2rem;
+  }
+  .containerOfCards {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+/* darkMode and lightMode */
 .changeToDark {
-background-color: var(--DarkBlue);
-} 
+  background-color: var(--DarkBlue);
+}
 .changeToWhite {
   color: var(--White);
 }
@@ -264,11 +257,8 @@ background-color: var(--DarkBlue);
   background-color: var(--VeryDarkBlue);
 }
 form.changeInput {
-
   background-color: var(--DarkBlue);
- 
 }
 .anchorStyle {
   text-decoration: none;
 }
-

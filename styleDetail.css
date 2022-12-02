@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Nunito+Sans:wght@300;600;800&display=swap");
+
+:root {
+  --DarkBlue: hsl(209, 23%, 22%); /* Dark Mode Elements */
+  --VeryDarkBlue: hsl(207, 26%, 17%); /*(Dark Mode Background)*/
+  --VeryDarkBlue: hsl(200, 15%, 8%); /*(Light Mode Text)*/
+  --DarkGray: hsl(0, 0%, 52%); /*(Light Mode Input)*/
+  --VeryLightGray: hsl(0, 0%, 98%); /*(Light Mode Background)*/
+  --White: hsl(0, 0%, 100%); /*(Dark Mode Text & Light Mode Elements)*/
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
+}
+html {
+  font-size: 14px;
+}
+body {
+  width: 100%;
+
+  background-color: var(--VeryLightGray);
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 15vh;
+  width: 100%;
+  box-shadow: 0 0 0.5rem #e4e4e4;
+  background-color: var(--White);
+}
+nav h3 {
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+nav .darkMode {
+  font-size: 1rem;
+  font-weight: 600;
+  border: 0;
+  background-color: transparent;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+.darkMode i {
+  margin-right: 0.6rem;
+}
+.container .btn {
+  position: relative;
+  height: 20vh;
+  /* border: 1px solid black; */
+}
+.container .btn button {
+  border: none;
+  width: 150px;
+  height: 40px;
+  border-radius: 0.3rem;
+  background-color: var(--White);
+  box-shadow: 0 0 0.3rem #7b7676;
+  color: var(--VeryDarkBlue);
+  font-size: 1.5rem;
+  position: absolute;
+  top: 35%;
+  left: 2rem;
+}
+.container .btn button:hover {
+  border: 1px solid var(--DarkGray);
+}
+.container .btn button ion-icon {
+  margin-right: 1rem;
+  position: relative;
+  top: 0.2rem;
+}
+.container .info {
+  position: relative;
+  /* border: 1px solid red; */
+}
+.container .info img {
+  position: relative;
+  left: 2rem;
+  /* border: 1px solid black; */
+  width: 85%;
+  height: 300px;
+}
+.container .details {
+  margin-left: 2rem;
+}
+.container .details h1 {
+  margin: 3rem 0 2rem 0;
+}
+.container .details .textStyle .sameMargins {
+  margin-bottom: 3.5rem;
+}
+.container .details .textStyle .sameMargins div {
+  margin-bottom: 1rem;
+}
+.container .details .textStyle .sameMargins span {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--VeryDarkBlue);
+}
+.container .details .textStyle .borderCountries{
+    /* border: 1px solid blue; */
+    width: 100%;
+    display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+  
+}
+.container .details .textStyle .borderCountries span {
+  margin-bottom: 1.5rem;
+  margin-right: 20rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+.container .details .textStyle .borderCountries .borders {
+  border-radius: 0.1rem;
+  background-color: var(--White);
+  box-shadow: 0 0 0.3rem #7b7676;
+  margin-right: 0.6rem;
+  text-align: center;
+  width: 100px;
+  height: 30px;
+  padding-top: 0.3rem;
+  
+}
+
+
+@media (min-width: 400px) {
+  nav h3 {
+    font-size: 2rem;
+    margin-left: 2rem;
+  }
+  nav .darkMode {
+    font-size: 1.5rem;
+    margin-right: 2rem;
+  }
+}
+
+@media (min-width: 800px) {
+  body {
+    width: 100%;
+  }
+
+  nav h3 {
+    margin-left: 4rem;
+    font-size: 2rem;
+  }
+  nav .darkMode {
+    font-size: 1.5rem;
+    margin-right: 4rem;
+  }
+}
