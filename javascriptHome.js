@@ -18,19 +18,14 @@ filterRegion(regionUrl);
 async function allCountries(allURL) {
   let response = await fetch(allURL);
   let json = await response.json();
-  console.log(json);
+  // console.log(json);
   for (let i = 0; i < json.length; i++) {
     let countryName = json[i].name.common;
     let population = json[i].population;
     let region = json[i].region;
     let Capital = json[i].capital;
     let flag = json[i].flags.png;
-    let nativeName,
-      currencies,
-      languages,
-      subRegion,
-      topLevelDomain,
-      borderCountries;
+    let nativeName,currencies,languages,subRegion,topLevelDomain,borderCountries;
     // other information should be saved to the local storage to use them the next page
     if (json[i].name.nativeName != undefined) {
       nativeName = Object.values(json[i].name.nativeName)[0].common;
@@ -84,7 +79,7 @@ async function allCountries(allURL) {
 document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
   let inputValue = document.getElementById("search").value;
-  document.querySelector(".containerOfCards").innerHTML = "";
+  document.querySelector(".containerOfCards").innerText = "";
   for (let i = 0; i < 250; i++) {
     let parsing = localStorage.getItem(`country${i}`);
     let countryObj = JSON.parse(parsing);
@@ -155,7 +150,7 @@ async function filterRegion(regionUrl) {
   options.forEach((element) => {
     element.addEventListener("click", async (event) => {
       event.preventDefault();
-      document.querySelector(".containerOfCards").innerHTML = "";
+      document.querySelector(".containerOfCards").innerText = "";
       console.log(event.target.innerText);
       let response = await fetch(regionUrl + event.target.innerText);
       let json = await response.json();
@@ -223,6 +218,7 @@ function save(element, i) {
 }
 //function load
 function load() {
+  
   for (let i = 0; i < 250; i++) {
     let parsing = localStorage.getItem(`country${i}`);
     let countryObj = JSON.parse(parsing);
