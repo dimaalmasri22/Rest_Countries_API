@@ -73,7 +73,10 @@ async function allCountries(allURL) {
       save(await JSON.stringify(object), i);
     }
   }
-  load();
+   document.querySelector(".containerOfCards").innerText = "";
+   load();
+  // if (localStorage.length!=250){ load();}else{return;}load();
+ 
 }
 //input feild
 document.querySelector("form").addEventListener("submit", (event) => {
